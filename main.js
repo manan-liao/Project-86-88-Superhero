@@ -56,15 +56,19 @@ function my_keydown(e){
 
     if(keyPressed == "38"){
         console.log("up");
+        up();
     }
     if(keyPressed == "40"){
         console.log("down");
+        down();
     }
     if(keyPressed == "37"){
         console.log("left");
+        left();
     }
     if(keyPressed == "39"){
         console.log("right");
+        right();
     }
 
     if(keyPressed == "70"){
@@ -86,5 +90,43 @@ function my_keydown(e){
     if(keyPressed == "82"){
         console.log("r");
         block_update("hulk_right_hand.png");
+    }
+}
+
+function up() {
+    if (player_y > 0) {
+        player_y = player_y - block_height;
+        console.log("The current block height is "+block_height);
+        console.log("When the up arrow key is pressed, x = "+player_x+"| y = "+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+
+function down() {
+    if (player_y <= 500) {
+        player_y = player_y + block_height;
+        console.log("The current block height is "+block_height);
+        console.log("When the down arrow key is pressed, x = "+player_x+"| y = "+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+
+function left() {
+    if (player_x > 0){
+        player_x = player_x - block_width;
+        console.log("The current block height is "+block_height);
+        console.log("When the left arrow key is pressed, x = "+player_x+"| y = "+player_y)
+    }
+}
+
+function right(){
+    if (player_x <= 850){
+        player_x = player_x + block_width;
+        console.log("The current block width is "+block_width);
+        console.log("When the right arrow key is pressed, x = "+player_x+"| y = "+player_y);
+        canvas.remove(player_object);
+        player_update();
     }
 }
